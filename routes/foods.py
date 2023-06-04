@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = MongoClient(os.getenv('DATABASE_URL'))
+client = MongoClient(os.getenv('DATABASE'))
 db = client['nutrition']
 
 foods = Blueprint('api/foods', __name__, url_prefix='/api/foods')
