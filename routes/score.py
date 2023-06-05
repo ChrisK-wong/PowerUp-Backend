@@ -18,5 +18,5 @@ def health():
     weight = request.args.get('weight', default=None, type=int)
     if any(x is None for x in [gender, height, weight]):
         return jsonify({'error': 'Missing required parameters'}), 400
-    return jsonify(score_health(gender, height, weight))
+    return jsonify({'health_score': score_health(gender, height, weight)})
 
