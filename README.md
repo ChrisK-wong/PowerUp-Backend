@@ -46,7 +46,7 @@ API: [power-up-backend.vercel.app](power-up-backend.vercel.app)
  #### overall score
 | Endpoint   | HTML Parameters | Returns  | Sample Request |
 |------------|-----------------|----------|----------------|
-| /api/score/overall | health_score: float<br/>fitness_score: float<br/>sleep_score: float<br/>diet_score: float<br/>exercise_score: float |  <pre lang="json">{&#13;    "diet_score": 890.0&#13;} | [Sample Request](https://power-up-backend.vercel.app/api/score/overall?health_score=0.8&fitness_score=0.9&sleep_score=0.7&diet_score=0.85&exercise_score=0.95) |
+| /api/score/overall | health_score: float<br/>fitness_score: float<br/>sleep_score: float<br/>diet_score: float<br/>exercise_score: float |  <pre lang="json">{&#13;    "diet_score": 890.0&#13;} | [https://power-up-backend.vercel.app/api/score/overall?health_score=0.8&fitness_score=0.9&sleep_score=0.7&diet_score=0.85&exercise_score=0.95](https://power-up-backend.vercel.app/api/score/overall?health_score=0.8&fitness_score=0.9&sleep_score=0.7&diet_score=0.85&exercise_score=0.95) |
 
 <!--
 #### all scores
