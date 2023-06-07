@@ -7,7 +7,7 @@ with open('model/input_scaler.pkl', 'rb') as f:
     scaler = pickle.load(f)
 
 
-def score_health(gender, height, weight):
+def health_score(gender, height, weight):
     """
     gender: {0: male, 1: female}
     height: cm
