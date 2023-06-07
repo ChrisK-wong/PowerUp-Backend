@@ -49,7 +49,7 @@ def diet():
 @score.route('/exercise', methods=['GET'])
 def exercise():
     workouts_per_week = request.args.get('workouts_per_week', default=None, type=int)
-    workout_intensity = request.args.get('workout_intensity', default=None, type=str)
+    workout_intensity = request.args.get('workout_intensity', default=None, type=int)
     if any(x is None for x in [workouts_per_week, workout_intensity]):
         return jsonify({'error': 'Missing required parameters'}), 400
     return jsonify({'exercise_score': exercise_score(workouts_per_week, workout_intensity)})
