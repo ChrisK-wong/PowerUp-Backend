@@ -26,7 +26,7 @@ API: [power-up-backend.vercel.app](power-up-backend.vercel.app)
 #### fitness score
 | Endpoint   | HTML Parameters | Returns  | Sample Request |
 |------------|-----------------|----------|----------------|
-| /api/score/fitness | heart_rate: int<br/>active_calories: int<br/>steps: int | <pre lang="json">{&#13;    "fitness_score": 0.65&#13;}</pre> | [https://power-up-backend.vercel.app/api/score/fitness?heart_rate=80&active_calories=100&steps=3000](https://power-up-backend.vercel.app/api/score/fitness?heart_rate=80&active_calories=100&steps=3000)) |
+| /api/score/fitness | heart_rate: int<br/>active_calories: int<br/>steps: int | <pre lang="json">{&#13;    "fitness_score": 0.65&#13;}</pre> | [https://power-up-backend.vercel.app/api/score/fitness?heart_rate=80&active_calories=100&steps=3000](https://power-up-backend.vercel.app/api/score/fitness?heart_rate=80&active_calories=100&steps=3000) |
 
 #### sleep score
 | Endpoint   | HTML Parameters | Returns | Sample Request |
@@ -38,16 +38,17 @@ API: [power-up-backend.vercel.app](power-up-backend.vercel.app)
 |------------|-----------------|---------|----------------|
 | /api/score/diet | times_eating_out: int<br/>times_eating_vegetables: int | <pre lang="json">{&#13;    "diet_score": 0.57&#13;}</pre> | [https://power-up-backend.vercel.app/api/score/diet?times_eating_out=2&times_eating_vegetables=8](https://power-up-backend.vercel.app/api/score/diet?times_eating_out=2&times_eating_vegetables=8) |
 
-<!-- #### exercise score
+#### exercise score
 | Endpoint   | HTML Parameters | Returns  | Sample Request |
 |------------|-----------------|----------|----------------|
-| /api/score/exercise | workouts_per_week: int<br/>workout_intensity: string | {"exercise_score": 0.95} | [](https://power-up-backend.vercel.app/api/score/exercise?workouts_per_week=5&workout_intensity=high) | -->
+| /api/score/exercise | workouts_per_week: int<br/>workout_intensity: string | <pre lang="json">{&#13;    "diet_score": 1.0&#13;} | [https://power-up-backend.vercel.app/api/score/exercise?workouts_per_week=5&workout_intensity=3](https://power-up-backend.vercel.app/api/score/exercise?workouts_per_week=5&workout_intensity=3) |
 
-<!-- #### overall score
+ #### overall score
 | Endpoint   | HTML Parameters | Returns  | Sample Request |
 |------------|-----------------|----------|----------------|
-| /api/score/overall | health_score: float<br/>fitness_score: float<br/>sleep_score: float<br/>diet_score: float<br/>exercise_score: float | {"overall_score": 0.88} | [Sample Request](https://power-up-backend.vercel.app/api/score/overall?health_score=0.8&fitness_score=0.9&sleep_score=0.7&diet_score=0.85&exercise_score=0.95) |
+| /api/score/overall | health_score: float<br/>fitness_score: float<br/>sleep_score: float<br/>diet_score: float<br/>exercise_score: float |  <pre lang="json">{&#13;    "diet_score": 890.0&#13;} | [Sample Request](https://power-up-backend.vercel.app/api/score/overall?health_score=0.8&fitness_score=0.9&sleep_score=0.7&diet_score=0.85&exercise_score=0.95) |
 
+<!--
 #### all scores
 | Endpoint   | HTML Parameters | Returns  | Sample Request |
 |------------|-----------------|----------|----------------|
