@@ -57,11 +57,11 @@ def exercise():
 
 @score.route('/overall', methods=['GET'])
 def overall():
-    _health_score = request.args.get('health_score', default=None, type=int)
-    _fitness_score = request.args.get('fitness_score', default=None, type=int)
-    _sleep_score = request.args.get('sleep_score', default=None, type=int)
-    _diet_score = request.args.get('diet_score', default=None, type=int)
-    _exercise_score = request.args.get('exercise_score', default=None, type=int)
+    _health_score = request.args.get('health_score', default=None, type=float)
+    _fitness_score = request.args.get('fitness_score', default=None, type=float)
+    _sleep_score = request.args.get('sleep_score', default=None, type=float)
+    _diet_score = request.args.get('diet_score', default=None, type=float)
+    _exercise_score = request.args.get('exercise_score', default=None, type=float)
     if any(x is None for x in [_health_score, _fitness_score, _sleep_score, _diet_score, _exercise_score]):
         return jsonify({'error': 'Missing required parameters'}), 400
     _score = overall_score(_health_score, _fitness_score, _sleep_score, _diet_score, _exercise_score)
