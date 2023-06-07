@@ -34,7 +34,7 @@ def sleep():
     if any(x is None for x in [_gender, _health_score, _fitness_score, _average_sleep_hours]):
         print([_gender, _health_score, _fitness_score, _average_sleep_hours])
         return jsonify({'error': 'Missing required parameters'}), 400
-    return jsonify({'health_score': sleep_score(_gender, _health_score, _fitness_score, _average_sleep_hours)})
+    return jsonify({'sleep_score': sleep_score(_gender, _health_score, _fitness_score, _average_sleep_hours)})
 
 
 @score.route('/diet', methods=['GET'])
