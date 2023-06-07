@@ -1,6 +1,6 @@
 def sleep_score(gender, health_score, fitness_score, average_sleep_hours):
     # Base optimal sleep hours on gender
-    base_sleep_hours = 9 if gender.lower() == 'female' else 8.5
+    base_sleep_hours = 9 if gender == 1 else 8.5
 
     # Adjust optimal sleep hours based on health and fitness scores
     optimal_sleep_hours = base_sleep_hours - (health_score + fitness_score) / 4

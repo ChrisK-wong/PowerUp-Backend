@@ -1,11 +1,14 @@
 def diet_score(times_eating_out, times_eating_vegetables):
-    # Calculate score for eating out
-    optimal_times_eating_out = 2
-    eating_out_score = 1 - abs(times_eating_out - optimal_times_eating_out) / 7
+    max_out = 30
+    max_veg = 30
 
-    # Calculate score for eating vegetables
-    max_times_eating_vegetables = 5
-    eating_vegetables_score = min(times_eating_vegetables, max_times_eating_vegetables) / max_times_eating_vegetables
+    times_eating_out = min(times_eating_out, max_out)
+    times_eating_vegetables = min(times_eating_vegetables, max_veg)
 
-    # Calculate combined score as average of the two scores
-    return (eating_out_score + eating_vegetables_score) / 2
+    out_score = times_eating_out / max_out
+    veg_score = times_eating_vegetables / max_veg
+
+    out_weight = 0.9
+    veg_weight = 0.5
+
+    return 0.5 + veg_score * veg_weight - out_score * out_weight

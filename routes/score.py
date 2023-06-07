@@ -28,10 +28,11 @@ def fitness():
 @score.route('/sleep', methods=['GET'])
 def sleep():
     _gender = request.args.get('gender', default=None, type=int)
-    _health_score = request.args.get('health_score', default=None, type=int)
-    _fitness_score = request.args.get('fitness_score', default=None, type=int)
+    _health_score = request.args.get('health_score', default=None, type=float)
+    _fitness_score = request.args.get('fitness_score', default=None, type=float)
     _average_sleep_hours = request.args.get('average_sleep_hours', default=None, type=int)
     if any(x is None for x in [_gender, _health_score, _fitness_score, _average_sleep_hours]):
+        print([_gender, _health_score, _fitness_score, _average_sleep_hours])
         return jsonify({'error': 'Missing required parameters'}), 400
     return jsonify({'health_score': sleep_score(_gender, _health_score, _fitness_score, _average_sleep_hours)})
 
