@@ -41,7 +41,7 @@ API: [power-up-backend.vercel.app](power-up-backend.vercel.app)
 #### exercise score
 | Endpoint   | HTML Parameters | Returns  | Sample Request |
 |------------|-----------------|----------|----------------|
-| /api/score/exercise | workouts_per_week: int<br/>workout_intensity: string | <pre lang="json">{&#13;    "diet_score": 1.0&#13;} | [https://power-up-backend.vercel.app/api/score/exercise?workouts_per_week=5&workout_intensity=3](https://power-up-backend.vercel.app/api/score/exercise?workouts_per_week=5&workout_intensity=3) |
+| /api/score/exercise | workouts_per_week: int<br/>workout_intensity: int | <pre lang="json">{&#13;    "diet_score": 1.0&#13;} | [https://power-up-backend.vercel.app/api/score/exercise?workouts_per_week=5&workout_intensity=3](https://power-up-backend.vercel.app/api/score/exercise?workouts_per_week=5&workout_intensity=3) |
 
  #### overall score
 | Endpoint   | HTML Parameters | Returns  | Sample Request |

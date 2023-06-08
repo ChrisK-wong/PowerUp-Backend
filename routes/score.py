@@ -80,7 +80,7 @@ def all():
     _times_eating_out = request.args.get('times_eating_out', default=None, type=int)
     _times_eating_vegetables = request.args.get('times_eating_vegetables', default=None, type=int)
     _workouts_per_week = request.args.get('workouts_per_week', default=None, type=int)
-    _workout_intensity = request.args.get('workout_intensity', default=None, type=str)
+    _workout_intensity = request.args.get('workout_intensity', default=None, type=int)
     if any(x is None for x in [_gender, _gender, _weight, _heart_rate, _active_calories, _steps, _average_sleep_hours, _times_eating_out, _times_eating_vegetables, _workouts_per_week, _workout_intensity]):
         return jsonify({'error': 'Missing required parameters'}), 400
     _health_score = health_score(_gender, _height, _weight)
