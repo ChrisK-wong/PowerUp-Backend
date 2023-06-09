@@ -9,4 +9,4 @@ def sleep_score(gender, health_score, fitness_score, average_sleep_hours):
     optimal_sleep_hours = max(min(optimal_sleep_hours, 9), 7)
 
     # Calculate sleep score based on difference from optimal sleep hours
-    return min(0, max(1, 1 - abs(average_sleep_hours - optimal_sleep_hours) / optimal_sleep_hours))
+    return max(0, min(1, 1 - abs(average_sleep_hours - optimal_sleep_hours) / optimal_sleep_hours))
