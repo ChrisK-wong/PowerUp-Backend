@@ -10,22 +10,31 @@ db = client['nutrition']
 
 foods = Blueprint('api/foods', __name__, url_prefix='/api/foods')
 
+def get_food_items(field, min_value, max_value, limit):
+    """
+    Returns a list of foods with the specified field value in a given range.
+    """
+    min_value = request.args.get('min', default=min_value, type=int)
+    max_value = request.args.get('max', default=max_value, type=int)
+    range_query = {"$gte": min_value, "$lte": max_value} if max_value else {"$gte": min_value}
+
+    pipeline = [
+        {"$match": {field: range_query}},
+        {"$sample": {"size": limit}},
+        {"$project": {"_id": 0}}
+    ]
+
+    cursor = db.foods.aggregate(pipeline)
+    results = list(cursor)
+    return jsonify(results)
+
 
 @foods.route('/calories', methods=['GET'])
 def calories():
     """
     Returns a list of foods with calories in a given range.
     """
-    min = request.args.get('min', default=0, type=int)
-    max = request.args.get('max', default=2000, type=int)
-    limit = request.args.get('limit', default=5, type=int)
-    range = {"$gte": min, "$lte": max} if max else {"$gte": min}
-    cursor = db.foods.find(
-        {"Data.Kilocalories": range},
-        {"_id": 0}
-    ).limit(limit)
-    results = list(cursor)
-    return jsonify(results)
+    return get_food_items("Data.Kilocalories", 0, 1000, 5)
 
 @foods.route('/protein', methods=['GET'])
 def protein():
@@ -33,17 +42,7 @@ def protein():
     Returns a list of foods with grams of protein in a given range.
     """
 
-    min = request.args.get('min', default=0, type=int)
-    max = request.args.get('max', default=88, type=int)
-    limit = request.args.get('limit', default=5, type=int)
-    range = {"$gte": min, "$lte": max} if max else {"$gte": min}
-    cursor = db.foods.find(
-        {"Data.Protein": range},
-        {"_id": 0}
-    ).limit(limit)
-    results = list(cursor)
-
-    return jsonify(results)
+    return get_food_items("Data.Protein", 0, 100, 5)
 
 @foods.route('/carbs', methods=['GET'])
 def carbs():
@@ -51,17 +50,7 @@ def carbs():
     Returns a list of foods with grams of protein in a given range.
     """
 
-    min = request.args.get('min', default=0, type=int)
-    max = request.args.get('max', default=100, type=int)
-    limit = request.args.get('limit', default=5, type=int)
-    range = {"$gte": min, "$lte": max} if max else {"$gte": min}
-    cursor = db.foods.find(
-        {"Data.Carbohydrate": range},
-        {"_id": 0}
-    ).limit(limit)
-    results = list(cursor)
-
-    return jsonify(results)
+    return get_food_items("Data.Carbohydrate", 0, 100, 5)
 
 @foods.route('/fiber', methods=['GET'])
 def fiber():
@@ -69,17 +58,7 @@ def fiber():
     Returns a list of foods with grams of protein in a given range.
     """
 
-    min = request.args.get('min', default=0, type=int)
-    max = request.args.get('max', default=100, type=int)
-    limit = request.args.get('limit', default=5, type=int)
-    range = {"$gte": min, "$lte": max} if max else {"$gte": min}
-    cursor = db.foods.find(
-        {"Data.Fiber": range},
-        {"_id": 0}
-    ).limit(limit)
-    results = list(cursor)
-
-    return jsonify(results)
+    return get_food_items("Data.Fiber", 0, 100, 5)
 
 @foods.route('/fat', methods=['GET'])
 def fat():
@@ -87,14 +66,4 @@ def fat():
     Returns a list of foods with grams of protein in a given range.
     """
 
-    min = request.args.get('min', default=0, type=int)
-    max = request.args.get('max', default=100, type=int)
-    limit = request.args.get('limit', default=5, type=int)
-    range = {"$gte": min, "$lte": max} if max else {"$gte": min}
-    cursor = db.foods.find(
-        {"Data.Fat.Total Lipid": range},
-        {"_id": 0}
-    ).limit(limit)
-    results = list(cursor)
-
-    return jsonify(results)
+    return get_food_items("Data.Fat.Total Lipid", 0, 100, 5)
